@@ -1,7 +1,7 @@
-# 📊 Predição de Evasão de Clientes – Telecom X  
+# Machine Learning para Previsão de Churn de Clientes Telecom X.2
 
-## 📌 Descrição do Projeto  
-Este projeto tem como objetivo analisar e prever a **evasão de clientes** (Churn) em uma operadora de telecomunicações, identificando os principais fatores que levam o cliente a cancelar o serviço e propondo estratégias de retenção.  
+## Descrição do Projeto  
+Esse projeto tem como objetivo analisar e prever a **evasão de clientes** (Churn) em uma operadora de telecomunicações, identificando os principais fatores que levam o cliente a cancelar o serviço e propondo estratégias de retenção.  
 
 O estudo foi dividido em **etapas de pré-processamento, modelagem e análise interpretativa**, combinando modelos que exigem normalização (como Regressão Logística) e modelos baseados em árvores (como Random Forest).  
 
@@ -26,7 +26,7 @@ O dataset utilizado foi previamente tratado com:
 
 ---
 
-## 📊 Proporção de Evasão Antes do Balanceamento  
+## Proporção de Evasão Antes do Balanceamento  
 | Classe         | Quantidade | Proporção |
 |----------------|-----------|-----------|
 | Não Evadiram   | 5174      | 71.2%     |
@@ -36,7 +36,7 @@ Após o balanceamento (SMOTE), as classes ficaram **50/50**.
 
 ---
 
-## 🔍 Modelos Criados  
+## Modelos Criados  
 Dois modelos foram escolhidos para avaliação:  
 
 1. **Regressão Logística** – requer normalização  
@@ -47,22 +47,52 @@ Dois modelos foram escolhidos para avaliação:
 
 ---
 
-## 📈 Avaliação dos Modelos  
+## Avaliação dos Modelos  
 
 | Modelo              | Acurácia | Precisão | Recall | F1-Score |
 |--------------------|----------|----------|--------|----------|
 | Regressão Logística| 80.2%    | 79.5%    | 81.0%  | 80.2%    |
 | Random Forest      | 85.7%    | 84.8%    | 86.3%  | 85.5%    |
 
-📌 **Conclusão:**  
+**Conclusão:**  
 O **Random Forest** apresentou desempenho superior, com melhor equilíbrio entre precisão e recall. A Regressão Logística continua relevante pela interpretabilidade.  
 
 ---
 
-## 📌 Importância das Variáveis
+## Análise de Importância das Variáveis
+
+### 🔹Regressão Logística — Top 20 Coeficientes
+
+<img src="graficos/Regressão Logistica - Top 20 Coeficientes.png" alt="Regressão Logística — Top 20 Coeficientes" width="600"/>
+
+Principais variáveis que mais aumentam a chance de churn:
+
+- InternetService_Fiber optic
+
+- account.Charges.Monthly
+
+- customer.SeniorCitizen
+
+- account.Contract_Two year (reduz churn)
+
+### 🔹 Random Forest — Top 20 Importâncias
+
+<img src="graficos/Random Forest - Top 20 Importâncias.png" alt="Random Forest — Top 20 Importâncias" width="600"/>
+
+Variáveis mais relevantes:
+
+- customer.tenure (tempo de permanência)
+
+- account.Charges.Total
+
+- account.Charges.Monthly
+
+- PaymentMethod_Electronic check
+
+## Matrizes de Confusão
 
 ### 🔹 Regressão Logística – Coeficientes  
-![Importância RL](logistic_importance.png)  
+![Random Forest](graficos/RL.png)
 
 Variáveis mais relevantes:  
 - `account.Charges.Monthly`  
@@ -72,16 +102,16 @@ Variáveis mais relevantes:
 ---
 
 ### 🔹 Random Forest – Feature Importance  
-![Importância RF](rf_importance.png)  
+![Random Forest](graficos/RF.png)
 
 Variáveis mais relevantes:  
 - `account.Charges.Total`  
 - `account.Charges.Monthly`  
-- `customer.tenure`  
+- `customer.tenure`
 
 ---
 
-## 📌 Estratégias de Retenção  
+## Estratégias de Retenção Sugeridas
 Com base nas análises, recomenda-se:  
 1. Criar **planos de fidelidade** para clientes com alto gasto mensal.  
 2. **Campanhas de retenção** para clientes no início do contrato (baixa `tenure`).  
@@ -89,5 +119,5 @@ Com base nas análises, recomenda-se:
 
 ---
 
-## 📜 Conclusão  
+## Conclusão  
 O estudo identificou padrões claros na evasão de clientes e comprovou que **modelos baseados em árvores** apresentam melhor desempenho neste caso. A combinação de insights interpretáveis (Regressão Logística) e alta performance (Random Forest) fornece uma base sólida para ações estratégicas da empresa.  
